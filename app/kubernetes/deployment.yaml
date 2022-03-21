@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dotnet-sample-app
+  labels:
+    app: dotnet-sample-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: dotnet-sample-app
+  template:
+    metadata:
+      labels:
+        app: dotnet-sample-app
+    spec:
+      containers:
+      - name: dotnet-sample-app
+        image: psivak/dotnet-sample-app:latest
+        ports:
+        - containerPort: 80
